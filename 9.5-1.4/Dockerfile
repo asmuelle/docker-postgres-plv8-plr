@@ -1,8 +1,8 @@
 FROM postgres:9.5
-MAINTAINER Chia-liang Kao <clkao@clkao.org>
+MAINTAINER Andreas Mueller <andreas@kwiqly.com>
 
 RUN apt-get update \
-	&& apt-get install -y build-essential libv8-dev git-core postgresql-server-dev-$PG_MAJOR \
+	&& apt-get install -y build-essential libv8-dev git-core postgresql-server-dev-$PG_MAJOR postgresql-$PG_MAJOR-plr\
 	&& rm -rf /var/lib/apt/lists/*
 
 ENV PLV8_BRANCH r1.4
