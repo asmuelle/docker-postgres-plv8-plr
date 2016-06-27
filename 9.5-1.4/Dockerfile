@@ -8,8 +8,7 @@ RUN apt-get update \
 	&& apt-get install -y --force-yes  liblapack-dev build-essential libv8-dev git-core postgresql-server-dev-$PG_MAJOR postgresql-$PG_MAJOR-plr libcurl4-gnutls-dev\
 	&& rm -rf /var/lib/apt/lists/*
  
-RUN R -e "install.packages(c('curl','ineq','dplyr', 'git2r', 'tidyr', 'readr', 'ineq', 'cobs', 'reshape2', 'httr', 'devtools'), repos='https://cran.rstudio.com/')"
-RUN R -e "install.packages(c('scales'), repos='https://cran.rstudio.com/')"
+RUN R -e "install.packages(c('curl','ineq','dplyr', 'git2r', 'tidyr', 'readr', 'ineq', 'cobs', 'reshape2', 'httr', 'devtools', 'scales'), repos='https://cran.rstudio.com/')"
 
 ENV PLV8_BRANCH r1.4
 
