@@ -5,20 +5,12 @@ RUN echo 'deb http://cran.rstudio.com/bin/linux/debian jessie-cran3/' >>/etc/apt
  
 
 RUN apt-get update \
-	&& apt-get install -y --force-yes  liblapack-dev build-essential libv8-dev git-core postgresql-server-dev-$PG_MAJOR postgresql-$PG_MAJOR-plr\
+	&& apt-get install -y --force-yes  liblapack-dev build-essential libv8-dev git-core postgresql-server-dev-$PG_MAJOR postgresql-$PG_MAJOR-plr libcurl4-gnutls-dev\
 	&& rm -rf /var/lib/apt/lists/*
  
-RUN R -e "install.packages(c('ineq','dplyr'), repos='https://cran.rstudio.com/')"
-RUN R -e 'if(!require("devtools")) install.packages("devtools",  repos="http://140.107.3.21")'
+RUN R -e "install.packages(c('curl','ineq','dplyr', 'git2r', 'tidyr', 'readr', 'ineq', 'cobs', 'reshape2', 'httr', 'devtools'), repos='https://cran.rstudio.com/')"
+RUN R -e "install.packages(c('scales'), repos='https://cran.rstudio.com/')"
 
-
-RUN R -e 'if(!require("git2r")) install.packages("git2r",  repos="http://140.107.3.21")'
- 
-RUN R -e 'if(!require("tidyr")) install.packages("tidyr",  repos="http://140.107.3.21")'
-RUN R -e 'if(!require("readr")) install.packages("readr",  repos="http://140.107.3.21")'
-RUN R -e 'if(!require("ineq")) install.packages("ineq",  repos="http://140.107.3.21")'
-RUN R -e 'if(!require("ineq")) install.packages("cobs",  repos="http://140.107.3.21")'
-RUN R -e 'if(!require("reshape2")) install.packages("reshape2",  repos="http://140.107.3.21")'
 ENV PLV8_BRANCH r1.4
 
 
