@@ -1,0 +1,17 @@
+#postgres-plv8-plr
+
+Docker image for running plv8 1.4.x  and PL/R on Postgres 9.5.
+
+Based on the [official Postgres image](http://registry.hub.docker.com/_/postgres/).
+##Build
+
+```bash
+$ docker build -t postgres-plv8-plr .
+```
+##Usage
+
+Start a postgres server container with persistent storage and give it a name:
+
+```bash
+$ docker run -p 5432:5432 -d -v /tmp/data:/var/lib/postgresql/data --name postgres -e POSTGRES_PASSWORD=somepasswd postgres-plv8-plr 
+```
